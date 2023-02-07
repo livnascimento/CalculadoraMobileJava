@@ -1,18 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimaryVariant"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/txt_expression"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="end|bottom"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/gray"
+        android:textSize="20sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="end|bottom"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_clear"
+            style="@style/Clear_Button"
+            android:text="c" />
+
+
+        <ImageButton
+            android:id="@+id/btn_parentheses"
+            style="@style/Operator_Button"
+            android:contentDescription="parentheses"
+            android:scaleType="center"
+            android:src="@drawable/parentheses" />
+
+        <ImageButton
+            android:id="@+id/btn_percent"
+            style="@style/Operator_Button"
+            android:contentDescription="division"
+            android:scaleType="center"
+            android:src="@drawable/percent" />
+
+        <ImageButton
+            android:id="@+id/btn_division"
+            style="@style/Operator_Button"
+            android:contentDescription="division"
+            android:scaleType="center"
+            android:src="@drawable/division" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_seven"
+            style="@style/Number_Button"
+            android:text="7" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_eight"
+            style="@style/Number_Button"
+            android:text="8" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_nine"
+            style="@style/Number_Button"
+            android:text="9" />
+
+        <ImageButton
+            android:id="@+id/btn_multiplication"
+            style="@style/Operator_Button"
+            android:contentDescription="multiplication"
+            android:scaleType="center"
+            android:src="@drawable/multiplication" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_four"
+            style="@style/Number_Button"
+            android:text="4" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_five"
+            style="@style/Number_Button"
+            android:text="5" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_six"
+            style="@style/Number_Button"
+            android:text="6" />
+
+        <ImageButton
+            android:id="@+id/btn_subtraction"
+            style="@style/Operator_Button"
+            android:src="@drawable/minus"
+            android:contentDescription="division"
+            android:scaleType="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_one"
+            style="@style/Number_Button"
+            android:text="1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_two"
+            style="@style/Number_Button"
+            android:text="2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_three"
+            style="@style/Number_Button"
+            android:text="3" />
+
+        <ImageButton
+            android:id="@+id/btn_addition"
+            style="@style/Operator_Button"
+            android:src="@drawable/addition"
+            android:contentDescription="sum"
+            android:scaleType="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_dot"
+            style="@style/Number_Button"
+            android:text="." />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_zero"
+            style="@style/Number_Button"
+            android:text="0" />
+
+        <ImageButton
+            android:id="@+id/btn_backspace"
+            style="@style/Number_Button"
+            android:contentDescription="delete"
+            android:scaleType="center"
+            android:src="@drawable/backspace" />
+
+        <ImageButton
+            android:id="@+id/btn_exe"
+            style="@style/Operator_Button"
+            android:src="@drawable/exe"
+            android:contentDescription="division"
+            android:scaleType="center"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

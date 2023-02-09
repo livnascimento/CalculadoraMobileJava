@@ -15,9 +15,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button zero, one, two, three, four, five, six, seven, eight, nine, dot,  clear;
 
-    private ImageButton backspace, exe, subtraction, addition, multiplication, division;
+    private ImageButton backspace, exe, subtraction, addition, multiplication, division, percent, parentheses;
 
     private TextView txtExpression, txtResult;
+
+    private boolean closeParentheses = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         multiplication.setOnClickListener(this);
         division.setOnClickListener(this);
         dot.setOnClickListener(this);
+        percent.setOnClickListener(this);
+        parentheses.setOnClickListener(this);
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (resultado == (double) longResult) txtResult.setText((CharSequence) String.valueOf((longResult)));
                     else txtResult.setText((CharSequence) String.valueOf(resultado));
                 } catch (Exception e) {
-
+                    txtResult.setText("Syntax Error");
                 }
             }
         });
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         exe = findViewById(R.id.btn_exe);
         backspace = findViewById(R.id.btn_backspace);
         clear = findViewById(R.id.btn_clear);
+        parentheses = findViewById(R.id.btn_parentheses);
 
         txtExpression = findViewById(R.id.txt_expression);
         txtResult = findViewById(R.id.txt_result);
@@ -124,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+
         switch (view.getId()) {
             case R.id.btn_zero:
                 writeExpression("0", true);
@@ -157,20 +163,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_addition:
-                writeExpression("+", false);
+                writeExpression("+ ", false);
                 break;
             case R.id.btn_subtraction:
-                writeExpression("-", false);
+                writeExpression("- ", false);
                 break;
             case R.id.btn_multiplication:
-                writeExpression("*", false);
+                writeExpression("* ", false);
                 break;
             case R.id.btn_division:
-                writeExpression("/", false);
+                writeExpression("/ ", false);
                 break;
             case R.id.btn_dot:
-                writeExpression("".equals(txtExpression.getText()) ? "0." : ".", true);
+                writeExpression(".", true);
                 break;
+            case R.id.btn_parentheses:
+                if (!closeParentheses){
+                    writeExpression("(", false);
+                    closeParentheses = true;
+                } else {
+                    writeExpression(") ", false);
+                    closeParentheses = false;
+                }
         }
 
     }

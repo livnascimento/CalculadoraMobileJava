@@ -40,7 +40,8 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_clear"
             style="@style/Clear_Button"
-            android:text="c" />
+            android:text="c"
+            android:layout_weight="2.03"/>
 
 
         <ImageButton
@@ -49,13 +50,6 @@
             android:contentDescription="parentheses"
             android:scaleType="center"
             android:src="@drawable/parentheses" />
-
-        <ImageButton
-            android:id="@+id/btn_percent"
-            style="@style/Operator_Button"
-            android:contentDescription="division"
-            android:scaleType="center"
-            android:src="@drawable/percent" />
 
         <ImageButton
             android:id="@+id/btn_division"
